@@ -1,0 +1,27 @@
+// Place all the styles related to the tweets controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+a#touchpad {
+	color: #37f89a;
+	background-color: #d5679a;
+}
+
+a#touchpad {
+	&:hover {
+		color: #1ff8ff;
+		background-color: #e6e7e8;
+		cursor: pointer;
+	}
+}
+
+div#vinil {
+	color: #ffffff;
+	background-color: #e90a81;
+	margin: 10px 10px 30px 230px;
+}
+
+canvas#notification {
+	border: 5px solid #e49f6a;
+	display: none;
+	position: absolute;
+}

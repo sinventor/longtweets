@@ -1,0 +1,14 @@
+<div class="container">
+  <%= form_for :tweet, url: tweets_path, method: :post do |f| %>
+    <p>
+    <h3>Текст твита:  <br /></h3>
+      <%= f.text_area :msg, rows: 13, cols: 50, class: 'form-control' %>
+    </p>
+    <div>
+      <li class="pager"><%= f.submit "Отправить твит", class: "btn btn-primary btn-lg" %>
+      </li>
+    </div>
+  <% end %>
+  <span>Кол-во символов:</span>
+  <label id="symbolsCounter"></label>
+</div>

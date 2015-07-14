@@ -1,0 +1,8 @@
+<li><%= link_to 'Главная', root_path %></li>
+<% if !current_user.nil? %>
+  <li><%= link_to 'Выйти', signout_path %></li>
+  <li><%= link_to 'Создать твит', tweets_new_path %></li> 
+<% else %>
+  <li><%= link_to 'Войти', '/auth/twitter' %></li>
+<% end %>
+<li><%= link_to 'Обратная связь', home_about_us_path %></li>

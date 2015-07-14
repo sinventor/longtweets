@@ -1,0 +1,35 @@
+<h2>
+  Добро пожаловать в сервис для отправки длинных твитов!
+</h2>
+<% cu = current_user %>
+<% unless cu.nil? %> 
+  <ul class="list-inline">
+    
+      <li>Created_at: <%= cu.created_at %></li>
+      <li>Updated_at: <%= cu.updated_at %></li>
+      <li>Uid: <%= cu.uid %></li>
+      <li>ID <%= cu.id %></li>
+      <li>Name: <%= cu.name %></li>
+      <li>Oauth_token: <%= cu.oauth_token %></li>
+      <li>Oauth_secret: <%= cu.oauth_secret %></li>
+    
+  </ul>
+<% end %>
+<dl class="dl-horizontal">
+  <dt>Описание</dt>
+  <dd>
+    Схема работы сервиса очень проста. Сначала вам нужно войти под своим именем в твиттер, воспользовавшись пунктом меню <b>Войти</b>. После этого вам становится доступной опция <b>Создать твит</b>.Выбрав этот пункт вы можете набрать сообщение, не ограниченное длиной 140 символов, в отличие от твиттера. 
+  </dd>
+</dl>
+<pre>
+  Code:
+  <code>
+    var input = "Venedicxt"
+    function strip(){
+      return "\n".match("\s")
+    }
+  </code><var>g</var><var>p</var>
+</pre>
+<p class="lead">
+  Наш сервис после того, как вы наберете текст и нажмете кнопку <b>Отправить твит</b>, сгенерирует картинку с текстом этого сообщения и отправит эту картинку от вашего имени.
+</p>

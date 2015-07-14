@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Twitter service" %>">
+    <title><%= content_for?(:title) ? yield(:title) : "Twitter service" %></title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <header>
+    <%= render 'layouts/navigation' %>
+    </header>
+    <main role="main">
+      <%= render 'layouts/messages' %>
+      <%= yield %>
+    </main>
+    <footer>
+      <p align=center>&copy;
+        <% start_year = 2014 %>
+        <% if start_year == Time.now.year %>
+        <%= start_year %>
+        <% else %>
+        <%= start_year.to_s + "-" + Time.now.year.to_s %>
+        <% end %>"Twitter service"
+      </p>
+    </footer>
+  </body>
+</html>
