@@ -1,7 +1,15 @@
-<li><%= link_to 'Главная', root_path %></li>
 <% if !current_user.nil? %>
   <li><%= link_to 'Выйти', signout_path %></li>
-  <li><%= link_to 'Создать твит', tweets_new_path %></li> 
+  <li><%= link_to 'Создать твит', new_tweet_path %></li>
+  <li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+      Dropd <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      <li><%= link_to 'Sh', new_direct_message_path %></li>
+      <li><%= link_to 'Ab', home_about_us_path %></li>
+    </ul>
+  </li>
 <% else %>
   <li><%= link_to 'Войти', '/auth/twitter' %></li>
 <% end %>

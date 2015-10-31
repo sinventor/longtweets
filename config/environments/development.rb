@@ -31,9 +31,9 @@ Rails.application.configure do
   # Checks for improperly declared sprockets dependencies.
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
-  config.twitter_key = '1ezYHev2TicLJMZfkrkCgwDeq'
-  config.twitter_secret = 'v0P0iHfNmNIAbiZp70qJL33EmeFYGN5rCdayvrVjMNcD2CQetq'
+  config.twitter_key = ENV['twitter_key']
+  config.twitter_secret = ENV['twitter_secret']
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
-
+  config.middleware.delete Rack::Lock
 end

@@ -3,11 +3,12 @@ class HomeController < ApplicationController
   end
 
   def about_us
-    @developers=[
-    						  {
-    						  	name: 'Рушан Аляутдинов', 
-    						  	email: 'rushan_orline@mail.ru'
-    						  }
-  							]
+    WebsocketRails[:weets].trigger 'deliver', { text: ' Ioppp' }
+    @developers = [
+    						    {
+    						  	  name: 'Рушан Аляутдинов', 
+    						  	  email: 'rushan_orline@mail.ru'
+    						    }
+  							  ]
   end
 end

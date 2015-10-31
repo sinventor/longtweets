@@ -1,0 +1,30 @@
+<div class="form-group message-form">
+  <%= form_for(@direct_message) do |f| %>
+    <% if @direct_message.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@direct_message.errors.count, "error") %> prohibited this direct_message from being saved:</h2>
+
+        <ul>
+          <% @direct_message.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :text, 'Сообщение' %><br>
+      <%= f.text_area :text, class: 'form-control', rows: 5 %>
+    </div>
+
+    <div class="field">
+      <%= f.label :recipient %><br>
+      <%= f.select :recipient, current_user.as_twitter_rest_client.friends.collect(&:screen_name), {include_blank: false}, class: 'form-control', multiple: true, size: 20 %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+
+  <% end %>
+</div>

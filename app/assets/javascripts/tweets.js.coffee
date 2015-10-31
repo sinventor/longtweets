@@ -1,36 +1,19 @@
+# Place all the behaviors and hooks related to the matching controller here.
+# All this logic will automatically be available in application.js.
+# You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
-	removeNotif = () ->
-		$("canvas#notification").css "display", "none"
-	$(document).on "page:change", ->
-		$("textarea").on 'input', () ->
-			$("#symbolsCounter").html($("textarea").val().length)
-		$("a#touchpad").hover (e) ->
-			e.preventDefault()
-			num1 = Math.floor(Math.random() * 99)
-			num2 = Math.floor(Math.random() * 99)
-			num3 = Math.floor(Math.random() * 99)
-			
-			mcan = $("canvas#notification")
-			#$("body").append mcan
-			$("canvas#notification").css "display", "block"
-			$("canvas#notification").css "left", "310px"
-			$("canvas#notification").css "top", "40px"
-			ctx = mcan[0].getContext "2d"
-			ctx.fillStyle = "#00ffdc"
-			ctx.fillRect(0,0,110, 100)
-			mcan.show()
-			mcan.delay(5000).slideDown().fadeOut()
-			if num1 > 10
-				str1 = '' + num1
-			else
-				str1 = '0' + num1
-			if num2 > 10
-				str2 = '' + num2
-			else
-				str2 = '0' + num2
-			if num3 > 10
-				str3 = '' + num3
-			else
-				str3 = '0' + num3
-			str = '#' + str1 + str2 + str3
-			this.style.backgroundColor = str
+  $('#editable_div').keydown (e) ->
+    keys = [8, 9, 16, 17, 18, 19, 20, 27, 33, 34, 35, 36, 37, 38, 39, 40, 45, 46, 144, 145]
+
+    if($.inArray(e.keyCode, keys) == -1)
+      if(checkMaxLength(@innerHTML, 15))
+        e.preventDefault()
+        e.stopPropagation()
+
+  checkMaxLength = (text, max) ->
+     text.length >= max
+  $('#input-tweet').on 'input', (e) ->
+    symbolsCount = $('#input-tweet').val().length
+    $('#input-tweet-number-of-symbols').html(symbolsCount)
+    $('#pro1').attr('aria-valuenow', symbolsCount)
+    $('#pro1').css('width', symbolsCount + '%')

@@ -15,3 +15,6 @@
 /log/*.log
 /tmp
 /**/*.zip
+
+# Ignore application configuration
+/config/application.yml

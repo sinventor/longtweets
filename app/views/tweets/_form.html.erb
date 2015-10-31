@@ -1,0 +1,33 @@
+<div class="form-group tw-form">
+  <%= form_for(@tweet) do |f| %>
+    <% if @tweet.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@tweet.errors.count, "error") %> prohibited this tweet from being saved:</h2>
+
+        <ul>
+          <% @tweet.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <h1>Че нового?</h1>
+    <div class="field">
+      <%= f.label :text, 'Ваш твит' %><br>
+      <%= f.text_area :text, maxlength: 11520, id: 'input-tweet', rows: 9, class: 'form-control' %>
+    </div>
+    <div class="group-inline">
+      <p>Кол-во символов: <span id="input-tweet-number-of-symbols">0</span></p>
+
+      <div class="actions">
+        <%= f.submit class: 'btn btn-success' %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<%#<div id="editable_div" contentEditable="true" onclick="this.contentEditable='true';" >TEXT BEGIN:</div>%>
+<div class="progress">
+  <div id="pro1" class="progress-bar progress-bar-warning progress-bar-striped active" role="progressbar" aria-valuenow="43" aria-valuemin = "0" aria-valuemax="100" style="width: 5%">
+    <span class="sr-only">45% Complete</span>
+  </div>
+</div>

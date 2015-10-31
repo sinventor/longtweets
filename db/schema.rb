@@ -11,7 +11,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150120142705) do
+ActiveRecord::Schema.define(version: 20151028223415) do
+
+  create_table "direct_messages", force: true do |t|
+    t.text     "text"
+    t.string   "recipient"
+    t.integer  "user_id"
+    t.boolean  "deliver"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "direct_messages", ["user_id"], name: "index_direct_messages_on_user_id"
+
+  create_table "public_chat", force: true do |t|
+    t.integer "user_id"
+    t.string  "text"
+  end
+
+  add_index "public_chat", ["user_id"], name: "index_public_chat_on_user_id"
+
+  create_table "tweets", force: true do |t|
+    t.string   "text"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "deliver"
+  end
+
+  add_index "tweets", ["user_id"], name: "index_tweets_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "provider"
@@ -21,6 +49,7 @@ ActiveRecord::Schema.define(version: 20150120142705) do
     t.string   "oauth_secret"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "profile_image"
   end
 
 end

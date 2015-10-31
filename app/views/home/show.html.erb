@@ -1,35 +1,60 @@
-<h2>
-  Добро пожаловать в сервис для отправки длинных твитов!
-</h2>
-<% cu = current_user %>
-<% unless cu.nil? %> 
-  <ul class="list-inline">
-    
-      <li>Created_at: <%= cu.created_at %></li>
-      <li>Updated_at: <%= cu.updated_at %></li>
-      <li>Uid: <%= cu.uid %></li>
-      <li>ID <%= cu.id %></li>
-      <li>Name: <%= cu.name %></li>
-      <li>Oauth_token: <%= cu.oauth_token %></li>
-      <li>Oauth_secret: <%= cu.oauth_secret %></li>
-    
-  </ul>
-<% end %>
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+      <img src="" alt="First slide">
+      <div class="container">
+        <div class="carousel-caption">
+          <h1>Управляйте своими личными сообщениями в твиттере!.</h1>
+          <p>Вы можете выбрать несколько, или всех ваших друзей, и отправить им одно и то же сообщение. Также можно очищать переписку, чтобы не захламлять пространство неактуальными сообщениями. Через определенное время будет доступна опция для создания шаблонов исходя отправки сообщений одним и тем же людям.</p>
+          <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://www.gravatar.com/avatar/3ee4f490dd3f060a249fd9db8b528f73?s=32&d=identicon&r=PG" alt="Second slide">
+      <div class="container">
+        <div class="carousel-caption">
+          <h1>Управляйте своими настройками в твиттере на нашем сервисе.</h1>
+          <p>Вы можете делать как непосредственные изменения настроек, так и оставлять отложенные задачи, которые автоматически исполнятся в указанное вами время.</p>
+          <p><%= link_to 'Войти через твиттер', '/auth/twitter/', class: 'btn btn-lg btn-primary' %></p>
+        </div>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://www.gravatar.com/avatar/3ee4f490dd3f060a249fd9db8b528f73?s=32&d=identicon&r=PG" alt="Third slide">
+      <div class="container">
+        <div class="carousel-caption">
+          <h1>Создавайте длинные твиты!.</h1>
+          <p>Теперь вы можете создавать твиты, содержащие более 140 символов! Достигается это довольно просто. Вы печатаете текст, не заботясь о количестве символов и нажимаете <b>Отправить</b>. После этого сервис генерирует изображение с содержимым данного текста и отправляет его от вашего аккаунта.</p>
+          <p><%= link_to 'Я создам длинный твит!', '/auth/twitter/', class: 'btn btn-lg btn-primary' %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div><!-- /.carousel -->
+
 <dl class="dl-horizontal">
   <dt>Описание</dt>
   <dd>
     Схема работы сервиса очень проста. Сначала вам нужно войти под своим именем в твиттер, воспользовавшись пунктом меню <b>Войти</b>. После этого вам становится доступной опция <b>Создать твит</b>.Выбрав этот пункт вы можете набрать сообщение, не ограниченное длиной 140 символов, в отличие от твиттера. 
   </dd>
 </dl>
-<pre>
-  Code:
-  <code>
-    var input = "Venedicxt"
-    function strip(){
-      return "\n".match("\s")
-    }
-  </code><var>g</var><var>p</var>
-</pre>
+
 <p class="lead">
   Наш сервис после того, как вы наберете текст и нажмете кнопку <b>Отправить твит</b>, сгенерирует картинку с текстом этого сообщения и отправит эту картинку от вашего имени.
 </p>

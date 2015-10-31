@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @direct_message.text %>
+</p>
+
+<p>
+  <strong>Recipient:</strong>
+  <%= @direct_message.recipient %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @direct_message.user %>
+</p>
+
+<p>
+  <strong>Deliver:</strong>
+  <%= @direct_message.deliver %>
+</p>
+
+<%= link_to 'Back', direct_messages_path %>

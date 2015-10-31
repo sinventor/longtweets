@@ -21,6 +21,14 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'rmagick'
 gem 'bootstrap-sass'
+gem 'figaro'
+gem 'rmagick-tti_converter'
+gem 'sidekiq'
+gem 'websocket-rails'
+gem 'kaminari'
+
+gem 'sinatra', require: false
+
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
 

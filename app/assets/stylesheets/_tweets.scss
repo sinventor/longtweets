@@ -1,0 +1,23 @@
+// Place all the styles related to the Tweets controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.tw-form {
+  // width: 400px;
+  // text-align: center;
+  form {
+    margin-left: 20%;
+    width: 540px;
+  }
+}
+
+.message-form {
+  form {
+    
+    width: 540px;
+  }
+}
+
+.tweet-wrapper {
+  margin-left: 20%;
+}
