@@ -1,4 +1,19 @@
 .footer__trademark {
   text-align: center;
-  margin-left: 340px;
+  vertical-align: center;
+  // margin-left: 340px;
+}
+
+footer.footer {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  background-color: #e67182;
+
+  clear: both;
+  height: 150px;
+  padding-top: 20px;
+  .footer__trademark {
+    vertical-align: middle;
+  }
 }

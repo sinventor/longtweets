@@ -1,4 +1,5 @@
 class PublicChat < ActiveRecord::Base
+
   belongs_to :user
   self.table_name = 'public_chat'
   validates_presence_of :text

@@ -26,7 +26,8 @@ gem 'rmagick-tti_converter'
 gem 'sidekiq'
 gem 'websocket-rails'
 gem 'kaminari'
-
+gem 'jquery-tokeninput-rails'
+gem 'rails-i18n', '~> 4.0', '>= 4.0.6'
 gem 'sinatra', require: false
 
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -34,4 +35,17 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'rspec_api_documentation'
+  gem 'raddocs'
+  gem 'capybara', '~> 2.5'
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
+end
+
+group :test do
+  gem 'rspec-sidekiq'
+end
 

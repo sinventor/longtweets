@@ -11,5 +11,11 @@ Rails.application.routes.draw do
 
   resources :tweets
   resource :home, only: [:show]
+  namespace :api, path: '', default: { format: 'json' } do
+    namespace :v1 do
+      resources :relationships
+    end
+  end
+
   root to: 'home#show'
 end

@@ -5,13 +5,14 @@ class TweetsController < ApplicationController
   # GET /tweets
   # GET /tweets.json
   def index
-    @tweets = Tweet.order('id').page(params[:pages])
+    @sent_tweets = Tweet.where(deliver: true).page(params[:page_for_sent])
+    @not_sent_tweets = Tweet.where.not(deliver: true).page(params[:page_for_not_sent])
   end
 
   # GET /tweets/1
   # GET /tweets/1.json
   def show
-    Tweet.find(40).update_attribute(:deliver, !true)
+    Tweet.find(params[:id]).update_attribute(:deliver, !true)
   end
 
   # GET /tweets/new
@@ -30,9 +31,9 @@ class TweetsController < ApplicationController
 
     respond_to do |format|
       if @tweet.save
-        # TweetWorker.perform_async(current_user.id, @tweet.id)
-        WebsocketRails[:tweets].trigger 'deliver', { text: 'dsdsds' }
-        format.html { redirect_to @tweet, notice: 'Tweet was successfully created.' }
+        TweetWorker.perform_async(Rails.env.test? ? 1 : current_user.id, @tweet.id)
+        # WebsocketRails[:tweets].trigger 'deliver', { text: 'dsdsds' }
+        format.html { redirect_to @tweet, notice: 'Твит был успешно создан и скоро будет виден в сети.' }
         format.json { render :show, status: :created, location: @tweet }
       else
         format.html { render :new }

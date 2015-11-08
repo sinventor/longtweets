@@ -19,11 +19,16 @@
 
     <div class="field">
       <%= f.label :recipient %><br>
-      <%= f.select :recipient, current_user.as_twitter_rest_client.friends.collect(&:screen_name), {include_blank: false}, class: 'form-control', multiple: true, size: 20 %>
+      <%= f.select :recipient, current_user.as_twitter_rest_client.followers.collect(&:screen_name), {include_blank: false}, class: 'form-control', multiple: true, size: 8 %>
+    </div>
+
+    <div class="field">
+      <%= label_tag 'recip' %><br />
+      <%= text_field_tag 'recip' %>
     </div>
 
     <div class="actions">
-      <%= f.submit %>
+      <%= f.submit class: 'btn btn-primary' %>
     </div>
 
   <% end %>

@@ -1,30 +1,10 @@
-<table class="table table-striped">
-  <caption>Мои твиты</caption>
-  <thead>
-    <tr>
-      <th>Text</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="tweets-first-sec">
+  <%= render 'sent_tweets' %>
+</div>
 
-  <tbody>
-    <% @tweets.each do |tweet| %>
-      <% cache tweet do %>
-        <tr>
-          <td><%= truncate(tweet.text, length: 33) %></td>
-          <td><%= tweet.user.uid %></td>
-          <td><%= link_to 'Show', tweet %></td>
-          <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
-          <td><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-    <% end %>
-
-  </tbody>
-</table>
-
-<%= paginate @tweets %>
+<div class="tweets-second-sec">
+  <%= render 'not_sent_tweets' %>
+</div>
 
 <br>
 

@@ -5,8 +5,6 @@ body {
 main {
   @extend .container-fluid;
   padding-bottom: 150px;
-
-  overflow: auto;
   p {
     text-align: justify;
   }
@@ -16,8 +14,8 @@ header {
   .navbar-nav {
     .navbar__img {
       border-radius: 50%;
-      border: #e56b71 solid 2px;
       height: 30px;
+      width: 30px;
     }
   }
 }
@@ -31,18 +29,6 @@ p.normal-state {
   margin-top: 50px;
   font-size: 22px;
   text-align: center;
-}
-
-.footer {
-  position: relative;
-  background-color: #e67182;
-  margin-top: -150px;
-  clear: both;
-  height: 150px;
-  padding-top: 20px;
-  .footer__trademark {
-    vertical-align: middle;
-  }
 }
 
 @font-face {

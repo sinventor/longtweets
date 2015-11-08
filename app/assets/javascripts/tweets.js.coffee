@@ -13,7 +13,8 @@ $ ->
   checkMaxLength = (text, max) ->
      text.length >= max
   $('#input-tweet').on 'input', (e) ->
+    console.log($('#input-tweet').val().length)
     symbolsCount = $('#input-tweet').val().length
-    $('#input-tweet-number-of-symbols').html(symbolsCount)
+    $('#input-tweet-number-of-symbols').text(symbolsCount)
     $('#pro1').attr('aria-valuenow', symbolsCount)
     $('#pro1').css('width', symbolsCount + '%')

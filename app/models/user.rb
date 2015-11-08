@@ -5,8 +5,7 @@ class User < ActiveRecord::Base
 
 	def tweet(tweet)
     client = as_twitter_rest_client
-    # message=" отправлено с longtweets.ru"
-    tmp_file = "tmp/img2.jpg"
+    tmp_file = "tmp/image.jpg"
     sent_twit = client.update_with_media(tweet[0,20],File.new(tmp_file))
     File.delete(tmp_file) if File.exists?(tmp_file)
     sent_twit
@@ -29,14 +28,23 @@ class User < ActiveRecord::Base
     end
   end
 
+  def get_followers
+    as_twitter_rest_client.followers.each_with_index.collect do |follower, i|
+      {
+        id: i + 1,
+        name: follower.screen_name
+      }
+    end
+  end
+
 	def self.from_omniauth(auth)
 		create! do |user|
-			user.provider = auth.provider
-			user.uid = auth.uid
-			user.name = auth.info.name
-			user.oauth_token = auth.credentials.token
-			user.oauth_secret = auth.credentials.secret
-			user.profile_image = auth.extra.raw_info.profile_image_url
+			user.provider = auth["provider"]
+			user.uid = auth["uid"]
+			user.name = auth["info"]["name"]
+			user.oauth_token = auth["credentials"]["token"]
+			user.oauth_secret = auth["credentials"]["secret"]
+			user.profile_image = auth["extra"]["raw_info"]["profile_image_url"]
 			user.save!
 		end
 	end

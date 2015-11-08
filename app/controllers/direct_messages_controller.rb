@@ -22,14 +22,13 @@ class DirectMessagesController < ApplicationController
   def create
 
     @direct_message = DirectMessage.new(direct_message_params.merge(user: current_user, deliver: false))
-    @direct_message.recipient = direct_message_params.with_indifferent_access.delete(:recipient).join(';') if direct_message_params.with_indifferent_access[:recipient].is_a? Array
-    
+    if @direct_message.recipient.is_a? Array
+      @direct_message.recipient = @direct_message.attributes.with_indifferent_access.delete(:recipient).reject{ |rec| rec.empty? }.join(';')
+    end
+
     respond_to do |format|
       if @direct_message.save
-        File.open('tmp/mylog.txt', 'w') do |f|
-          f.write(@direct_message.recipient)
-        end
-        # current_user.as_twitter_rest_client.create_direct_message(@direct_message.recipient, @direct_message.text)
+        DirectMessageSenderWorker.perform_async(current_user.id, @direct_message.recipient, @direct_message.text)
         format.html { redirect_to @direct_message, notice: 'Direct message was successfully created.' }
         format.json { render :show, status: :created, location: @direct_message }
       else
@@ -57,6 +56,7 @@ class DirectMessagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def direct_message_params
-      params.require(:direct_message).permit(:text, recipient: {array: true})
+      # rec = 
+      params.require(:direct_message).permit(:text, recipient: [])
     end
 end

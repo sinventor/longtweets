@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
+//= require jquery.tokeninput
 //= require_tree .
 //= require websocket_rails/main
 

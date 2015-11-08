@@ -33,7 +33,28 @@ Rails.application.configure do
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
+  config.allow_concurrency = false
 
+  config.twitter_key = ENV['twitter_key']
+  config.twitter_secret = ENV['twitter_secret']
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 end
+
+OmniAuth.config.test_mode = true
+OmniAuth.config.mock_auth[:twitter] = {
+  "provider" => 'twitter',
+  "uid" => '8310926658',
+  "credentials" => {
+    "token" => ENV['user_oauth_token'],
+    "secret" => ENV['user_oauth_secret']
+  },
+  "info" => {
+    "name" => 'Some Name'
+  },
+  "extra" => {
+    "raw_info" => {
+      "profile_image_url" => 'https://pbs.twimg.com/profile_images/1400480959/Sans_nom-2_400x400.png'
+    }
+  }
+}
